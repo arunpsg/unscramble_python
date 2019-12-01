@@ -4,7 +4,7 @@ It's ok if you don't understand how to read files.
 """
 import csv
 
-bangalore_list = set()
+bangalore_list = []
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
@@ -14,23 +14,23 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-fixed_numbers = set()
+fixed_numbers = []
 
 for call in calls:
     if call[0].startswith("(080"):
         if call[1].startswith("("):
             code = call[1][call[1].find("(")+1:call[1].find(")")]
             if call[1].startswith("(080)"):
-                fixed_numbers.add(code)
-            bangalore_list.add(code)
+                fixed_numbers.append(code)
+            bangalore_list.append(code)
         else:
-            bangalore_list.add(call[1][:4])
-
+            bangalore_list.append(call[1][:4])
+bangalore_set = set(bangalore_list)
 print("The numbers called by people in Bangalore have codes:")
-for code in sorted(bangalore_list):
+for code in sorted(bangalore_set):
     print(code)
 
-print(str(round(len(fixed_numbers)*100/len(bangalore_list), 2)) + " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round(len(fixed_numbers)*100/len(bangalore_list), 2)))
 
 """
 TASK 3:

@@ -12,20 +12,26 @@ with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
-calling_numbers = set()
-texting_numbers = set()
+callingNumbers = set()
+callReceivingNumbers = set()
+textNumbers = set()
+textReceivingNumbers = set()
 
 for call in calls:
-    calling_numbers.add(call[0])
+    callingNumbers.add(call[0])
+    callReceivingNumbers.add(call[1])
 
 for text in texts:
-    texting_numbers.add(text[0])
+    textNumbers.add(text[0])
+    textReceivingNumbers.add(text[1])
 
-print("call_list : ", calling_numbers)
-print("text_list : ", texting_numbers)
+print("call_list : ", callingNumbers)
+print("text_list : ", textNumbers)
+
+marketingNumbers = sorted(callingNumbers.difference(textNumbers).difference(callReceivingNumbers).difference(textReceivingNumbers))
 
 print("These numbers could be telemarketers:")
-for marketing_number in sorted(calling_numbers.difference(texting_numbers)):
+for marketing_number in marketingNumbers:
     print(marketing_number)
 
 """

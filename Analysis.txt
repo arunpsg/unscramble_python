@@ -1,5 +1,12 @@
 Task0: O(1)
+	There are no loops involved. The complexity is same irrespective of number of items
 Task1: O(n)
+	There are 2 for loops involved. Complexity is O(n), where n is total number of either call or text numbers (whichever is greater)
 Task2: O(n)
+	There is one 'for loop' involved. Complexity is O(n), where n is the total number of call entries
 Task3: O(n)
+	There is one 'for loop' & sorted operation involved. Complexity is O(n) - for loop; O(nlogn) for sorted function. So overall the complexity is O(nlogn)
 Task4: O(n)
+	O(n) - for loop, where n is the greater number of call, text entries. 
+	O(nlogn) - sorted function
+	So, overall complexity is O(nlogn)
